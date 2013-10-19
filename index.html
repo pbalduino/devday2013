@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+
+    <title>DevDay 2013 - JavaScript for Pros</title>
+
+    <meta name="description" content="DevDay 2013 Belo Horizonte - JavaScript for Pros">
+    <meta name="author" content="Plínio Balduino">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="css/reveal.min.css">
+    <link rel="stylesheet" href="css/theme/serif.css" id="theme">
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/idea.css">
+
+    <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+
+    <script>
+      document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+
+  <style type="text/css">
+    .reveal pre {
+      font-size: 0.9em;
+    }
+
+    .reveal pre code {
+      overflow: visible;
+      max-height: none;
+    }
+
+    span.red {
+      color: red;
+      font-size: 1.2em;
+    }
+
+    .reveal li.grow {
+      line-height: 1.8em;
+    }
+  </style>
+
+  <body>
+
+    <div class="reveal">
+
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+        <section>
+          <h1>JavaScript for Pros</h1>
+          <hr />
+          <img src="img/devday2013.png">
+          <h5>Belo Horizonte - 19/Out/2013</h5>
+          <hr />
+          <p>
+            <a href="http://about.me/pbalduino">Plínio Balduino</a> / <a href="http://twitter.com/p_balduino">@p_balduino</a>
+          </p>
+        </section>
+
+        <section>
+          <h2>Plínio Balduino</h2>
+          <hr />
+          <h3>
+            A past century software developer</h3>
+          <img src="img/cover.jpeg" height="400">
+        </section>
+
+        <section>
+          <h2>Brendan Eich</h2>
+          <hr />
+          <img src="img/brendan_eich.jpg" height="400">
+          <p>Developed JavaScript in 1995</p>
+          <aside class="notes">Criou a linguagem em 10 dias, como Mocha, e depois LiveScript. Em 1996 submeteu ao ECMA</aside>
+        </section>
+
+        <section>
+          <section>
+            <h2>Misconceptions</h2>
+            <hr />
+            <h3 class="fragment grow">Not Java</h3>
+            <h3 class="fragment grow">Not a toy language</h3>
+            <h3 class="fragment grow">Not web only</h3>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Rules of thumb</h2>
+            <hr />
+            <ol>
+            <li class="fragment grow">The clause <code>var</code> is not optional. <span class="red">Use it.</span></li>
+            <li class="fragment grow">Sometimes <code>;</code> can be optional. <span class="red">Use it.</span></li>
+            <li class="fragment grow">Prefer <code><span class="red">===</span></code> and <code><span class="red">!==</span></code> over <code>==</code> and <code>!=</code></li>
+            <li class="fragment grow">Don't blame the tool.</li>
+            </ol>
+            
+          </section>
+        </section>
+
+        <section>
+          <h2>Origins</h2>
+          <hr />
+          <img src="img/origins.png" height="400">
+        </section>
+
+        <section>
+          <h2>Definition</h2>
+          <hr />
+          <h3 class="fragment grow">Dynamic</h3>
+          <h3 class="fragment grow">Object-oriented</h3>
+          <h3 class="fragment grow">Prototipe-based</h3>
+          <h3 class="fragment grow">Functional</h3>
+          <h3 class="fragment">Very flexible</h3>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Dynamic...</h2>
+          <h3>... like Ruby</h3>
+          <pre><code data-trim class="javascript">var x = 1;
+
+var y = "oh yeah!";
+
+eval("alert('meh');");
+          </code></pre>
+        </section>
+
+        <section>
+          <section>
+          <h2>Object-oriented</h2>
+          <pre><code data-trim class="javascript">// JavaScript
+function Dog() {
+
+  this.bark = function() {
+    return "WHOOF!"
+  };
+}
+
+var rex = new Dog();
+
+rex.bark();</code></pre>
+          </section>
+          <section>
+          <h2>Object-oriented</h2>
+          <pre><code data-trim class="java">// Java
+public class Dog() {
+
+  public String bark() {
+    return "WHOOF!"
+  };
+}
+
+Dog rex = new Dog();
+
+rex.bark();</code></pre>
+          </section>
+
+        </section>
+
+        <section>
+          <section>
+            <h2>Prototype-based</h2>
+            <hr />
+            <h3>Because JavaScript is object-oriented</h3>
+            <h3>Not class-oriented</h3>
+          </section>
+          <section>
+            <h2>Classical inheritance</h2>
+            <hr />
+            <img src="img/inheritance.png" height="400">
+          </section>
+          <section>
+            <pre><code data-trim class="javascript">function Animal() {
+  this.breath() {
+    console.log("I'm breathing");
+  }
+}
+function Dog() {
+  this.bark() {
+    console.log("WHOOOF!");
+  }
+}
+function Fish() {
+  this.swim() {
+    console.log("GLOOB GLOOB!");
+  }
+}
+Dog.prototype = new Animal();
+Fish.prototype = new Animal();</code></pre>
+          </section>
+
+          <section>
+            <h2>Multiple inheritance</h2>
+            <img src="img/multiple.png" height="400">
+          </section>
+          <section>
+            <h2>Mixin</h2>
+            <pre><code data-trim class="javascript">function Bubbles() {
+  this.bubble() {
+    console.log("Making bubbles");
+  }
+}</code></pre>
+          </section>
+          <section>
+            <h2>Mixin</h2>
+            <pre><code data-trim class="javascript">Object.prototype.includes = function (constructor) {
+  var obj = new constructor();
+  for (var prop in obj) {
+    if (obj.hasOwnProperty(prop)) {
+      this.prototype[prop] = obj[prop];
+    }
+  }
+};
+
+Fish.includes(Bubbles);
+var fish = new Fish();
+
+fish.bubble();
+            </code></pre>
+          </section>
+
+        </section>
+
+        <section>
+        	<section>
+	          <h2>Functional</h2>
+	          <q>JS is Lisp in C's Clothing</q> (Douglas Crockford)
+	          <img src="img/wolf.jpg" height="400">
+        	</section>
+        	<section>
+        		<h2>High Order Functions</h2>
+        		<pre><code data-trim class="scheme">; SCHEME
+(define calculate (lambda (op v1 v2) 
+                          (op v1 v2)))
+
+(define sum (lambda (a b) (+ a b)))
+
+(define mult (lambda (x y) (* x y)))
+
+(calculate sum 2 3) ; retorna 5
+
+(calculate mult 2 3) ; retorna 6</code></pre>
+        	</section>
+
+        	<section>
+        		<h2>High Order Functions</h2>
+        		<pre><code data-trim class="javascript">// JavaScript
+function calculate(op, v1, v2) {
+  return op(v1, v2);
+}
+
+function sum(a, b){
+  return a + b;
+}
+function mult(x, y){
+  return x * y;
+}
+
+calculate(sum, 2, 3); // retorna 5
+
+calculate(mult, 2, 3); // retorna 6</code></pre>
+        	</section>
+
+        	<section>
+        		<h2>jQuery uses all the time</h2>
+        		<pre><code data-trim class="javascript">$(function(){
+  console.log("DOM loaded")
+});
+
+$(".clickable").click(function(){
+  console.log(this + " was clicked")
+});</code></pre>
+        	</section>
+
+        	<section>
+        		<h2>Currying</h2>
+        		<pre><code data-trim class="javascript">function hey(text, name) {
+  console.log(text + ", " + name);
+}
+
+hey("Bom dia", "João");
+
+hey("Bom dia", "José");
+
+hey("Bom dia", "Nicolau");</code></pre>
+      		</section>
+        	<section>
+        		<h2>Currying</h2>
+        		<pre><code data-trim class="javascript">function hey(text) {
+  return function(name) {
+    console.log(text + ", " + name);
+  }
+}
+
+var bomDia = hey("Bom dia");
+
+bomDia("João");
+
+bomDia("José");
+
+bomDia("Nicolau");</code></pre>
+      		</section>
+      	</section>
+
+      	<section><h2>Error handling</h2>
+      		<pre><code data-trim class="javascript">try{
+
+  cause_an_error();
+
+} catch(err) {
+
+  console.log("Ooops: ", err.description);
+
+};</code></pre>
+      	</section>
+
+        <section>
+          <h2>JavaScript is everywhere</h2>
+          <img src="img/cloud.png" height="400">
+        </section>
+
+        <section>
+          <h2>Why not JavaScript?</h2>
+          <img src="img/javascript.png" height="400" class="fragment">
+        </section>
+
+        <section>
+          <h2>Thank you</h2>
+          <img src="img/gustavo.jpg" height="400">
+          <h3>http://pbalduino.github.io/devday2013/</h3>
+        </section>
+
+      </div>
+
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.min.js"></script>
+
+    <script>
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'zoom', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+          // { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
+          // { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+
+    </script>
+
+  </body>
+</html>
